@@ -1,18 +1,18 @@
 /**
- * echarts ç™¾åº¦åœ°å›¾æ‰©å±•ï¼Œå¿…é¡»åœ¨echartsåˆå§‹åŒ–å‰ä½¿ç”¨
+ * echarts °Ù¶ÈµØÍ¼À©Õ¹£¬±ØĞëÔÚecharts³õÊ¼»¯Ç°Ê¹ÓÃ
  *
- * @desc echartsåŸºäºCanvasï¼Œçº¯Javascriptå›¾è¡¨åº“ï¼Œæä¾›ç›´è§‚ï¼Œç”ŸåŠ¨ï¼Œå¯äº¤äº’ï¼Œå¯ä¸ªæ€§åŒ–å®šåˆ¶çš„æ•°æ®ç»Ÿè®¡å›¾è¡¨ã€‚
- * @author Neil (æ¨éª¥, 511415343@qq.com)
+ * @desc echarts»ùÓÚCanvas£¬´¿JavascriptÍ¼±í¿â£¬Ìá¹©Ö±¹Û£¬Éú¶¯£¬¿É½»»¥£¬¿É¸öĞÔ»¯¶¨ÖÆµÄÊı¾İÍ³¼ÆÍ¼±í¡£
+ * @author Neil (Ñîæ÷, 511415343@qq.com)
  */
 define(function (require) {
 
     /**
-     * æ„é€ å‡½æ•°
+     * ¹¹Ôìº¯Êı
      *
      * @param {String|HTMLElement|BMap.Map} obj
      * @param {BMap} BMap
      * @param {echarts} ec
-     * @parma {Object=} mapOption ç™¾åº¦åœ°å›¾åˆå§‹åŒ–é€‰é¡¹
+     * @parma {Object=} mapOption °Ù¶ÈµØÍ¼³õÊ¼»¯Ñ¡Ïî
      * @constructor
      */
     function BMapExt(obj, BMap, ec, mapOption) {
@@ -20,7 +20,7 @@ define(function (require) {
     };
 
     /**
-     * echarts å®¹å™¨å…ƒç´ 
+     * echarts ÈİÆ÷ÔªËØ
      *
      * @type {HTMLElement}
      * @private
@@ -28,7 +28,7 @@ define(function (require) {
     BMapExt.prototype._echartsContainer = null;
 
     /**
-     * ç™¾åº¦åœ°å›¾å®ä¾‹
+     * °Ù¶ÈµØÍ¼ÊµÀı
      *
      * @type {BMap.Map}
      * @private
@@ -36,7 +36,7 @@ define(function (require) {
     BMapExt.prototype._map = null;
 
     /**
-     * ä½¿ç”¨çš„echartså®ä¾‹
+     * Ê¹ÓÃµÄechartsÊµÀı
      *
      * @type {ECharts}
      * @private
@@ -52,7 +52,7 @@ define(function (require) {
     BMapExt.prototype._geoCoord = [];
 
     /**
-     * è®°å½•åœ°å›¾çš„ä¾¿å®œé‡
+     * ¼ÇÂ¼µØÍ¼µÄ±ãÒËÁ¿
      *
      * @type {Array.<number>}
      * @private
@@ -61,7 +61,7 @@ define(function (require) {
 
 
     /**
-     * åˆå§‹åŒ–æ–¹æ³•
+     * ³õÊ¼»¯·½·¨
      *
      * @param {String|HTMLElement|BMap.Map} obj
      * @param {BMap} BMap
@@ -73,7 +73,7 @@ define(function (require) {
         self._map = obj.constructor == BMap.Map ? obj : new BMap.Map(obj, mapOption);
 
         /**
-         * Overlayç±»,ç”¨æ¥ç”Ÿæˆè¦†ç›–ç‰©
+         * OverlayÀà,ÓÃÀ´Éú³É¸²¸ÇÎï
          *
          * @constructor
          * @extends BMap.Overlay
@@ -83,7 +83,7 @@ define(function (require) {
         Overlay.prototype = new BMap.Overlay();
 
         /**
-         * åˆå§‹åŒ–
+         * ³õÊ¼»¯
          *
          * @param {BMap.Map} map
          * @override
@@ -108,7 +108,7 @@ define(function (require) {
         var myOverlay = new Overlay();
 
         /**
-         * è·å–echartså®¹å™¨
+         * »ñÈ¡echartsÈİÆ÷
          *
          * @return {HTMLElement}
          * @public
@@ -118,7 +118,7 @@ define(function (require) {
         };
 
         /**
-         * è·å–mapå®ä¾‹
+         * »ñÈ¡mapÊµÀı
          *
          * @return {BMap.Map}
          * @public
@@ -128,20 +128,20 @@ define(function (require) {
         }
 
         /**
-         * è‡ªå®šä¹‰æ‹–æ‹½äº‹ä»¶
+         * ×Ô¶¨ÒåÍÏ×§ÊÂ¼ş
          */
         self.onmoving = null;
         self.onmoveend = null;
 
         /**
-         * è‡ªå®šä¹‰ç¼©æ”¾äº‹ä»¶
+         * ×Ô¶¨ÒåËõ·ÅÊÂ¼ş
          */
         self.onzoom = null;
 
         /**
-         * ç»çº¬åº¦è½¬æ¢ä¸ºå±å¹•åƒç´ 
+         * ¾­Î³¶È×ª»»ÎªÆÁÄ»ÏñËØ
          *
-         * @param {Array.<number>} geoCoord  ç»çº¬åº¦
+         * @param {Array.<number>} geoCoord  ¾­Î³¶È
          * @return {Array.<number>}
          * @public
          */
@@ -152,9 +152,9 @@ define(function (require) {
         };
 
         /**
-         * å±å¹•åƒç´ è½¬æ¢ä¸ºç»çº¬åº¦
+         * ÆÁÄ»ÏñËØ×ª»»Îª¾­Î³¶È
          *
-         * @param {Array.<number>} pixel  åƒç´ åæ ‡
+         * @param {Array.<number>} pixel  ÏñËØ×ø±ê
          * @return {Array.<number>}
          * @public
          */
@@ -167,7 +167,7 @@ define(function (require) {
         };
 
         /**
-         * åˆå§‹åŒ–echartså®ä¾‹
+         * ³õÊ¼»¯echartsÊµÀı
          *
          * @return {ECharts}
          * @public
@@ -208,7 +208,7 @@ define(function (require) {
         };
 
         /**
-         * è·å–EChartså®ä¾‹
+         * »ñÈ¡EChartsÊµÀı
          *
          * @return {ECharts}
          * @public
@@ -218,7 +218,7 @@ define(function (require) {
         };
 
         /**
-         * è·å–åœ°å›¾çš„åç§»é‡
+         * »ñÈ¡µØÍ¼µÄÆ«ÒÆÁ¿
          *
          * @return {Array.<number>}
          * @public
@@ -228,8 +228,8 @@ define(function (require) {
         };
 
         /**
-         * å¯¹echartsçš„setOptionåŠ ä¸€æ¬¡å¤„ç†
-         * ç”¨æ¥ä¸ºmarkPointã€markLineä¸­æ·»åŠ xã€yåæ ‡ï¼Œéœ€è¦nameä¸geoCoordå¯¹åº”
+         * ¶ÔechartsµÄsetOption¼ÓÒ»´Î´¦Àí
+         * ÓÃÀ´ÎªmarkPoint¡¢markLineÖĞÌí¼Óx¡¢y×ø±ê£¬ĞèÒªnameÓëgeoCoord¶ÔÓ¦
          *
          * @param {Object}
          * @public
@@ -237,7 +237,7 @@ define(function (require) {
         self.setOption = function (option, notMerge) {
             var series = option.series || {};
 
-            // è®°å½•æ‰€æœ‰çš„geoCoord
+            // ¼ÇÂ¼ËùÓĞµÄgeoCoord
             for (var i = 0, item; item = series[i++];) {
                 var geoCoord = item.geoCoord;
                 if (geoCoord) {
@@ -247,7 +247,7 @@ define(function (require) {
                 }
             }
 
-            // æ·»åŠ xã€y
+            // Ìí¼Óx¡¢y
             for (var i = 0, item; item = series[i++];) {
                 var markPoint = item.markPoint || {};
                 var markLine = item.markLine || {};
@@ -272,9 +272,9 @@ define(function (require) {
         }
 
         /**
-         * å¢åŠ xã€yåæ ‡
+         * Ôö¼Óx¡¢y×ø±ê
          *
-         * @param {Object} obj  markPointã€markLine dataä¸­çš„é¡¹ï¼Œå¿…é¡»æœ‰name
+         * @param {Object} obj  markPoint¡¢markLine dataÖĞµÄÏî£¬±ØĞëÓĞname
          * @param {Object} geoCoord
          */
         self._AddPos = function (obj) {
@@ -285,7 +285,7 @@ define(function (require) {
         };
 
         /**
-         * ç»‘å®šåœ°å›¾äº‹ä»¶çš„å¤„ç†æ–¹æ³•
+         * °ó¶¨µØÍ¼ÊÂ¼şµÄ´¦Àí·½·¨
          *
          * @private
          */
@@ -300,7 +300,7 @@ define(function (require) {
         }
 
         /**
-         * åœ°å›¾ç¼©æ”¾è§¦å‘äº‹ä»¶
+         * µØÍ¼Ëõ·Å´¥·¢ÊÂ¼ş
          *
          * @private
          */
@@ -309,15 +309,15 @@ define(function (require) {
         }
 
         /**
-         * åœ°å›¾ç§»åŠ¨ã€å¦‚æ‹–æ‹½è§¦å‘äº‹ä»¶
+         * µØÍ¼ÒÆ¶¯¡¢ÈçÍÏ×§´¥·¢ÊÂ¼ş
          *
-         * @param {string} type moving | moveend  ç§»åŠ¨ä¸­|ç§»åŠ¨ç»“æŸ
+         * @param {string} type moving | moveend  ÒÆ¶¯ÖĞ|ÒÆ¶¯½áÊø
          * @return {Function}
          * @private
          */
         function _moveHandler(type) {
             return function () {
-                // è®°å½•ä¾¿å®œé‡
+                // ¼ÇÂ¼±ãÒËÁ¿
                 var offsetEle =
                     self._echartsContainer.parentNode.parentNode.parentNode;
                 self._mapOffset = [
@@ -332,7 +332,7 @@ define(function (require) {
         }
 
         /**
-         * Zrenderæ‹–æ‹½è§¦å‘äº‹ä»¶
+         * ZrenderÍÏ×§´¥·¢ÊÂ¼ş
          *
          * @param {boolean} isStart
          * @return {Function}
@@ -346,9 +346,9 @@ define(function (require) {
         }
 
         /**
-         * è§¦å‘äº‹ä»¶
+         * ´¥·¢ÊÂ¼ş
          *
-         * @param {stirng}  type äº‹ä»¶ç±»å‹
+         * @param {stirng}  type ÊÂ¼şÀàĞÍ
          * @private
          */
         function _fireEvent(type) {
@@ -361,7 +361,7 @@ define(function (require) {
         }
 
         /**
-         * åˆ·æ–°é¡µé¢
+         * Ë¢ĞÂÒ³Ãæ
          *
          * @public
          */
